@@ -1,0 +1,34 @@
+Table fact_table_application {
+  application_id int pk
+  date_application date
+  code_score int 
+  technical_score int
+  hired bool
+}
+
+Table date {
+  date_application date pk
+  year int
+  month int
+  day in
+}
+
+Table candidate {
+  application_id int pk
+  first_name varchar(70)
+  last_name varchar(70)
+  email varchar(70)
+  yoe int
+  seniority varchar(30)
+  technology varchar(70)
+}
+
+Table interview {
+  application_id int pk
+  date_application date
+  country varchar(70)
+}
+
+Ref: fact_table_application.application_id > interview.application_id
+Ref: fact_table_application.application_id > candidate.application_id
+Ref: fact_table_application.date_application > date.date_application
