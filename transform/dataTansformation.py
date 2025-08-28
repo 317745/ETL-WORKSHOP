@@ -32,3 +32,10 @@ class transformation:
     
     def allTables(self):
         return [self.factTableApplication(), self.tableDate(), self.tableCandidate(), self.tableINterview()]
+
+def GenerateDataSets(pairs):
+    dfs = []
+    for data, name in pairs: 
+        df = pd.DataFrame(data)  
+        dfs.append((name, df))
+    return dfs

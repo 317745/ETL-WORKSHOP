@@ -5,7 +5,6 @@ def load(table, conn):
     if isinstance(table, list):
         for tName, df in table:
             df.to_sql(tName, conn, if_exists='replace')
-            conn.close
 
     else: 
         df = table[1]
