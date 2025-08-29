@@ -24,14 +24,14 @@ def graphs(extractedData):
         hiresByTechnology,
         names='Technology',
         values='Hires',
-        title='Hires by Technology'
+        title='HIRES BY TECHNOLOGY'
     )
 
     fig_year = px.bar(
         hiresByYear,
         x='Year',
         y='Hires',
-        title='Hires by Year'
+        title='HIRES BY YEAR'
     )
 
     fig_seniority = px.line_polar(
@@ -39,7 +39,7 @@ def graphs(extractedData):
         theta='Seniority',
         r='Hires',
         line_close=True,
-        title='Hires by Seniority'
+        title='HIRES BY SENIORITY'
     )
 
     fig_country_year = px.area(
@@ -47,7 +47,7 @@ def graphs(extractedData):
         x='Year',
         y='Hires',
         color='Country',
-        title='Hires by Country over Years'
+        title='HIRES BY COUNTRY OVER YEARS'
     )
 
     fig_month_year = px.area(
@@ -55,29 +55,30 @@ def graphs(extractedData):
         color='Month',
         y='Hires',
         x='Year',
-        title='Hires by Month and Year'
+        title='HIRES BY MONTH AND YEAR'
     )
 
     fig_nothires_vs_hires = px.bar(
         applicationsVsHiresByYear,
         y=['TotalNotHires', 'TotalHires'],
         x='Technology',
-        title='Not hires vs Hires'
+        title='NOT HIRES VS HIRES',
+        barmode="stack"
     )
-    fig_nothires_vs_hires.update_layout(barmode="stack")
 
     fig_hires_by_country = px.scatter_geo(
         hiresBYCountry,
         locations="Country", 
         locationmode="country names",
         size="Hires",       
-        color="Hires",         
+        color="Hires",    
+        title="HYRES BY COUNTRY",    
         projection="natural earth"
     )
 
     # Layout final
     app.layout = html.Div([
-        html.H1('ETL Workshop - Data Engineer KPIs'),
+        html.H1('ETL WORKSHOP - KPIs VISUALIZATION'),
         dcc.Graph(figure=fig_tech),
         dcc.Graph(figure=fig_year),
         dcc.Graph(figure=fig_seniority),

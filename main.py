@@ -20,7 +20,7 @@ def main():
     hiresBySeniority = classKpi.hiresBySeniority()
     hiresByCountryYear = classKpi.hiresByCountryYear()
     hiresByMonthYear = classKpi.hiresByMonthYear()
-    NotHiresVsHiresByYear = classKpi.NotHiresVsHiresByYear()
+    NotHiresVsHires = classKpi.NotHiresVsHires()
     hiresBYCountry = classKpi.hiresBYCountry()
     
     methods = [
@@ -29,7 +29,7 @@ def main():
         (hiresBySeniority, "hiresBySeniority"),
         (hiresByTechnology, "hiresByTechnology"),
         (hiresByYear, "hiresByYear"),
-        (NotHiresVsHiresByYear, "NotHiresVsHiresByYear"),
+        (NotHiresVsHires, "NotHiresVsHires"),
         (hiresBYCountry, "hiresBYCountry")
     ]
 

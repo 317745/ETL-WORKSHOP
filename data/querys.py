@@ -87,7 +87,7 @@ class kpis:
         ''')
     
 
-    def NotHiresVsHiresByYear(self):
+    def NotHiresVsHires(self):
         return self._query_to_json(''' 
             SELECT 
                 COUNT(*) as Applications,
