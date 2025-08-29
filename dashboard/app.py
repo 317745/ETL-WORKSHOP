@@ -12,13 +12,13 @@ def graphs(extractedData):
         print("extractedData no tiene suficientes datasets aún")
         return
 
-    # ✅ Los DataFrames ya vienen listos
     hiresByCountryYear = extractedData[0][0]    
     hiresByMonthYear = extractedData[1][0]      
     hiresBySeniority = extractedData[2][0]      
     hiresByTechnology = extractedData[3][0]     
     hiresByYear = extractedData[4][0]           
     applicationsVsHiresByYear = extractedData[5][0]
+    hiresBYCountry = extractedData[6][0]
 
     fig_tech = px.pie(
         hiresByTechnology,
@@ -34,34 +34,45 @@ def graphs(extractedData):
         title='Hires by Year'
     )
 
-    fig_seniority = px.bar(
+    fig_seniority = px.line_polar(
         hiresBySeniority,
-        x='Seniority',
-        y='Hires',
+        theta='Seniority',
+        r='Hires',
+        line_close=True,
         title='Hires by Seniority'
     )
 
-    fig_country_year = px.bar(
+    fig_country_year = px.area(
         hiresByCountryYear,
         x='Year',
         y='Hires',
         color='Country',
-        barmode='group',
         title='Hires by Country over Years'
     )
 
-    fig_month_year = px.bar(
+    fig_month_year = px.area(
         hiresByMonthYear,
-        x='Month',
+        color='Month',
         y='Hires',
-        title='Hires by Month in 2020'
+        x='Year',
+        title='Hires by Month and Year'
     )
 
-    # Pie especial para aplicaciones vs hires
-    fig_apps_vs_hires = px.pie(
-        names=['Total Applications', 'Total Hires'],
-        values=[applicationsVsHiresByYear.TotalApplications, applicationsVsHiresByYear.TotalHires],
-        title='Applications vs Hires'
+    fig_nothires_vs_hires = px.bar(
+        applicationsVsHiresByYear,
+        y=['TotalNotHires', 'TotalHires'],
+        x='Technology',
+        title='Not hires vs Hires'
+    )
+    fig_nothires_vs_hires.update_layout(barmode="stack")
+
+    fig_hires_by_country = px.scatter_geo(
+        hiresBYCountry,
+        locations="Country", 
+        locationmode="country names",
+        size="Hires",       
+        color="Hires",         
+        projection="natural earth"
     )
 
     # Layout final
@@ -72,5 +83,6 @@ def graphs(extractedData):
         dcc.Graph(figure=fig_seniority),
         dcc.Graph(figure=fig_country_year),
         dcc.Graph(figure=fig_month_year),
-        dcc.Graph(figure=fig_apps_vs_hires)
+        dcc.Graph(figure=fig_nothires_vs_hires),
+        dcc.Graph(figure=fig_hires_by_country)
     ])

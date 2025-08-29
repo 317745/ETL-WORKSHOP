@@ -19,8 +19,9 @@ def main():
     hiresByYear = classKpi.hiresByYear()
     hiresBySeniority = classKpi.hiresBySeniority()
     hiresByCountryYear = classKpi.hiresByCountryYear()
-    hiresByMonthYear = classKpi.hiresByMonthYear(2020)
-    applicationsVsHiresByYear = classKpi.applicationsVsHiresByYear()
+    hiresByMonthYear = classKpi.hiresByMonthYear()
+    NotHiresVsHiresByYear = classKpi.NotHiresVsHiresByYear()
+    hiresBYCountry = classKpi.hiresBYCountry()
     
     methods = [
         (hiresByCountryYear, "hiresByCountryYear"),
@@ -28,9 +29,11 @@ def main():
         (hiresBySeniority, "hiresBySeniority"),
         (hiresByTechnology, "hiresByTechnology"),
         (hiresByYear, "hiresByYear"),
-        (applicationsVsHiresByYear, "applicationsVsHiresByYear")
+        (NotHiresVsHiresByYear, "NotHiresVsHiresByYear"),
+        (hiresBYCountry, "hiresBYCountry")
     ]
 
+    global extractedData 
     extractedData = GenerateDataSets(methods)
     conn.close()
 
