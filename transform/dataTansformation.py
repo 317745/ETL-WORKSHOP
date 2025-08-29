@@ -37,5 +37,5 @@ def GenerateDataSets(pairs):
     dfs = []
     for data, name in pairs: 
         df = pd.DataFrame(data)  
-        dfs.append((name, df))
+        dfs.append((df, name))
     return dfs
