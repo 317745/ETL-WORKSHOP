@@ -2,7 +2,7 @@ from extract.dataExtraction import extraction
 from transform.dataTansformation import transformation, GenerateDataSets 
 from load.dataLoad import load
 from data.querys import kpis
-from dashboard.app import app, graphs
+from dashboard.graphs import app, graphs
 
 import sqlite3
 
@@ -42,4 +42,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    app.run(debug=True, port=3307)
+    app.run(debug=True, port=3333)
