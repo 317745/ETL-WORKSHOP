@@ -50,39 +50,7 @@ Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, fl
 
 ## SCHEMA
 
-
-                   ┌──────────────┐
-                   │     date     │  <-- Dimension Table: enables temporal analysis of applications
-                   │──────────────│
-                   │date_application PK│
-                   │year               │
-                   │month              │
-                   │day                │
-                   └───────▲──────────┘
-                   ┌───────┴──────────┐
-                   │   applications   │  <-- Fact Table: records each application and key metrics (scores, hired)
-                   │─────────────────│
-                   │application_id PK │
-                   │date_application FK│
-                   │code_score        │
-                   │technical_score   │
-                   │hired             │
-                   └───────▲───────▲──┘
-                           │       │
-           ┌───────────────┘       └───────────────                   
-   ┌───────┴────────┐                     ┌────────┴─────────┐
-   │   candidates    │                     │    interview     │
-   │────────────────│                     │─────────────────│
-   │application_id PK│  <-- FK from fact   │application_id PK │  <-- FK from fact
-   │first_name       │                     │date_application │
-   │last_name        │                     │country          │
-   │email            │                     └─────────────────┘
-   │yoe              │
-   │seniority        │
-   │technology       │
-   └─────────────────┘
-
-##
+![Imagen](../DW/image.png)
 
 ## Star Schema Justification
 
