@@ -50,7 +50,7 @@ Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, fl
 
 ## SCHEMA
 
-![Imagen](../DW/image.png)
+![ETL Process Diagram](DW/image.png)
 
 ## Star Schema Justification
 
