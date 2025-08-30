@@ -85,6 +85,8 @@ Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, fl
    │technology       │
    └─────────────────┘
 
+##
+
 ## Star Schema Justification
 
 The dimensional model is designed as a star schema, with applications as the central fact table containing key measures (code_score, technical_score, and hired). The candidates dimension provides descriptive attributes such as name, experience, seniority, and technology, enabling analysis of hires by candidate characteristics. The date dimension decomposes application dates into year, month, and day for temporal analysis, while the interview dimension stores contextual information like country, supporting geographic insights. Foreign key relationships ensure referential integrity between the fact and dimension tables. This design facilitates the ETL process by separating extraction, transformation, and loading, while allowing efficient queries for KPIs such as hires by technology, year, seniority, or country.
