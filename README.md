@@ -59,8 +59,6 @@ Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, fl
                    │month              │
                    │day                │
                    └───────▲──────────┘
-                           │
-                           │
                    ┌───────┴──────────┐
                    │   applications   │  <-- Fact Table: records each application and key metrics (scores, hired)
                    │─────────────────│
@@ -71,8 +69,7 @@ Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, fl
                    │hired             │
                    └───────▲───────▲──┘
                            │       │
-           ┌───────────────┘       └───────────────┐
-           │                                       │
+           ┌───────────────┘       └───────────────                   
    ┌───────┴────────┐                     ┌────────┴─────────┐
    │   candidates    │                     │    interview     │
    │────────────────│                     │─────────────────│
