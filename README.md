@@ -17,37 +17,7 @@ Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, fl
 
 ## Project Structure
 
-.
-├── applications.db            # SQLite database generated when loading data
-├── dashboard/                 # Dashboard folder (visualization with Dash/Plotly)
-│   ├── graphs.py              # Definition of graphs and visual components
-│   └── __pycache__/           # Python compiled files (can be ignored)
-│
-├── data/                      # Initial data sources
-│   ├── candidates.csv         # Main dataset with candidate information
-│   └── __pycache__/           # Compiled files (should be ignored)
-│
-├── DW/                        # Data Warehouse documentation folder
-│   ├── Captura...png          # Image (e.g., screenshot of DW diagram)
-│   └── diagram                # Diagram file (ERD/MER, depends on tool used)
-│
-├── extract/                   # Extraction module (E in ETL)
-│   ├── dataExtraction.py      # Functions to read data from CSV/other formats
-│   ├── querys.py              # Auxiliary queries related to extraction
-│   └── __pycache__/           # Compiled files
-│
-├── load/                      # Loading module (L in ETL)
-│   ├── dataLoad.py            # Functions to load transformed data to SQLite
-│   └── __pycache__/           # Compiled files
-│
-├── transform/                 # Transformation module (T in ETL)
-│   ├── dataTansformation.py   # Functions to clean, process and transform data
-│   └── __pycache__/           # Compiled files
-│
-├── main.py                    # Main script that orchestrates the ETL pipeline
-├── README.md                  # Project documentation
-├── requirements.txt           # Dependencies needed to run the project
-└── __pycache__/               # Compiled files from main (can be ignored)
+![Project Structure](StructureProject/image.png)
 
 ## SCHEMA
 
