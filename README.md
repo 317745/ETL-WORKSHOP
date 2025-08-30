@@ -16,37 +16,38 @@ You will receive a CSV file (`data/candidates.csv`) with 50,000 rows. ETL steps:
 Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, flask, pandas, numpy, plotly. Linux / distros: recommended to create a virtual environment: `python3 -m venv .venvEtl`, `source .venvEtl/bin/activate`, `pip install -r requirements.txt`.
 
 ## Project Structure
+
 .
-├── applications.db            # Base de datos SQLite generada al cargar los datos
-├── dashboard/                 # Carpeta del dashboard (visualización con Dash/Plotly)
-│   ├── graphs.py              # Definición de gráficos y componentes visuales
-│   └── __pycache__/           # Archivos compilados de Python (se pueden ignorar)
+├── applications.db            # SQLite database generated when loading data
+├── dashboard/                 # Dashboard folder (visualization with Dash/Plotly)
+│   ├── graphs.py              # Definition of graphs and visual components
+│   └── __pycache__/           # Python compiled files (can be ignored)
 │
-├── data/                      # Fuente de datos iniciales
-│   ├── candidates.csv         # Dataset principal con información de candidatos
-│   └── __pycache__/           # Archivos compilados (se ignoran)
+├── data/                      # Initial data sources
+│   ├── candidates.csv         # Main dataset with candidate information
+│   └── __pycache__/           # Compiled files (should be ignored)
 │
-├── DW/                        # Carpeta para documentación del Data Warehouse
-│   ├── Captura...png          # Imagen (ej. captura del diagrama del DW)
-│   └── diagram                # Archivo del diagrama (MER/DER, según herramienta)
+├── DW/                        # Data Warehouse documentation folder
+│   ├── Captura...png          # Image (e.g., screenshot of DW diagram)
+│   └── diagram                # Diagram file (ERD/MER, depends on tool used)
 │
-├── extract/                   # Módulo de extracción (E en ETL)
-│   ├── dataExtraction.py      # Funciones para leer datos desde CSV/otros formatos
-│   ├── querys.py              # Consultas auxiliares relacionadas a extracción
-│   └── __pycache__/           # Archivos compilados
+├── extract/                   # Extraction module (E in ETL)
+│   ├── dataExtraction.py      # Functions to read data from CSV/other formats
+│   ├── querys.py              # Auxiliary queries related to extraction
+│   └── __pycache__/           # Compiled files
 │
-├── load/                      # Módulo de carga (L en ETL)
-│   ├── dataLoad.py            # Funciones para cargar datos transformados a SQLite
-│   └── __pycache__/           # Archivos compilados
+├── load/                      # Loading module (L in ETL)
+│   ├── dataLoad.py            # Functions to load transformed data to SQLite
+│   └── __pycache__/           # Compiled files
 │
-├── transform/                 # Módulo de transformación (T en ETL)
-│   ├── dataTansformation.py   # Funciones para limpiar, procesar y transformar datos
-│   └── __pycache__/           # Archivos compilados
+├── transform/                 # Transformation module (T in ETL)
+│   ├── dataTansformation.py   # Functions to clean, process and transform data
+│   └── __pycache__/           # Compiled files
 │
-├── main.py                    # Script principal que orquesta el pipeline ETL
-├── README.md                  # Documentación del proyecto
-├── requirements.txt           # Dependencias necesarias para correr el proyecto
-└── __pycache__/               # Archivos compilados de main (ignorar)
+├── main.py                    # Main script that orchestrates the ETL pipeline
+├── README.md                  # Project documentation
+├── requirements.txt           # Dependencies needed to run the project
+└── __pycache__/               # Compiled files from main (can be ignored)
 
 ## SCHEMA
 
