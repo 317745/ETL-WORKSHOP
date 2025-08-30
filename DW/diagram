@@ -1,4 +1,4 @@
-Table fact_table_application {
+Table applications {
   application_id int pk
   date_application date
   code_score int 
@@ -13,7 +13,7 @@ Table date {
   day in
 }
 
-Table candidate {
+Table candidates {
   application_id int pk
   first_name varchar(70)
   last_name varchar(70)
@@ -29,6 +29,6 @@ Table interview {
   country varchar(70)
 }
 
-Ref: fact_table_application.application_id > interview.application_id
-Ref: fact_table_application.application_id > candidate.application_id
-Ref: fact_table_application.date_application > date.date_application
+Ref: applications.application_id > interview.application_id
+Ref: applications.application_id > candidates.application_id
+Ref: applications.date_application > date.date_application

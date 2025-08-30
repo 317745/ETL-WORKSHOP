@@ -1,7 +1,7 @@
 from extract.dataExtraction import extraction
 from transform.dataTansformation import transformation, GenerateDataSets 
 from load.dataLoad import load
-from data.querys import kpis
+from extract.querys import kpis
 from dashboard.graphs import app, graphs
 
 import sqlite3

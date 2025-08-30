@@ -17,20 +17,77 @@ Install dependencies: `pip install -r requirements.txt`. Key Libraries: dash, fl
 
 ## Project Structure
 .
-├── applications.db        # SQLite DW  
-├── dashboard              # Dash app  
-│   └── app.py  
-├── data                   # Raw CSV  
-│   └── candidates.csv  
-├── extract                # Extraction module  
-│   └── dataExtraction.py  
-├── transform              # Transformation module  
-│   └── dataTansformation.py  
-├── load                   # Load module  
-│   └── dataLoad.py  
-├── main.py                # Runs ETL + Dashboard  
-├── requirements.txt       # Python dependencies  
-└── README.md
+├── applications.db            # Base de datos SQLite generada al cargar los datos
+├── dashboard/                 # Carpeta del dashboard (visualización con Dash/Plotly)
+│   ├── graphs.py              # Definición de gráficos y componentes visuales
+│   └── __pycache__/           # Archivos compilados de Python (se pueden ignorar)
+│
+├── data/                      # Fuente de datos iniciales
+│   ├── candidates.csv         # Dataset principal con información de candidatos
+│   └── __pycache__/           # Archivos compilados (se ignoran)
+│
+├── DW/                        # Carpeta para documentación del Data Warehouse
+│   ├── Captura...png          # Imagen (ej. captura del diagrama del DW)
+│   └── diagram                # Archivo del diagrama (MER/DER, según herramienta)
+│
+├── extract/                   # Módulo de extracción (E en ETL)
+│   ├── dataExtraction.py      # Funciones para leer datos desde CSV/otros formatos
+│   ├── querys.py              # Consultas auxiliares relacionadas a extracción
+│   └── __pycache__/           # Archivos compilados
+│
+├── load/                      # Módulo de carga (L en ETL)
+│   ├── dataLoad.py            # Funciones para cargar datos transformados a SQLite
+│   └── __pycache__/           # Archivos compilados
+│
+├── transform/                 # Módulo de transformación (T en ETL)
+│   ├── dataTansformation.py   # Funciones para limpiar, procesar y transformar datos
+│   └── __pycache__/           # Archivos compilados
+│
+├── main.py                    # Script principal que orquesta el pipeline ETL
+├── README.md                  # Documentación del proyecto
+├── requirements.txt           # Dependencias necesarias para correr el proyecto
+└── __pycache__/               # Archivos compilados de main (ignorar)
+
+## SCHEMA
+
+
+                   ┌──────────────┐
+                   │     date     │  <-- Dimension Table: enables temporal analysis of applications
+                   │──────────────│
+                   │date_application PK│
+                   │year               │
+                   │month              │
+                   │day                │
+                   └───────▲──────────┘
+                           │
+                           │
+                   ┌───────┴──────────┐
+                   │   applications   │  <-- Fact Table: records each application and key metrics (scores, hired)
+                   │─────────────────│
+                   │application_id PK │
+                   │date_application FK│
+                   │code_score        │
+                   │technical_score   │
+                   │hired             │
+                   └───────▲───────▲──┘
+                           │       │
+           ┌───────────────┘       └───────────────┐
+           │                                       │
+   ┌───────┴────────┐                     ┌────────┴─────────┐
+   │   candidates    │                     │    interview     │
+   │────────────────│                     │─────────────────│
+   │application_id PK│  <-- FK from fact   │application_id PK │  <-- FK from fact
+   │first_name       │                     │date_application │
+   │last_name        │                     │country          │
+   │email            │                     └─────────────────┘
+   │yoe              │
+   │seniority        │
+   │technology       │
+   └─────────────────┘
+
+## Star Schema Justification
+
+The dimensional model is designed as a star schema, with applications as the central fact table containing key measures (code_score, technical_score, and hired). The candidates dimension provides descriptive attributes such as name, experience, seniority, and technology, enabling analysis of hires by candidate characteristics. The date dimension decomposes application dates into year, month, and day for temporal analysis, while the interview dimension stores contextual information like country, supporting geographic insights. Foreign key relationships ensure referential integrity between the fact and dimension tables. This design facilitates the ETL process by separating extraction, transformation, and loading, while allowing efficient queries for KPIs such as hires by technology, year, seniority, or country.
 
 ## How to Run
 Activate virtual environment (Linux/macOS): `source .venvEtl/bin/activate`. Run ETL + Dashboard: `python3 main.py`. Open browser at [http://127.0.0.1:3333/](http://127.0.0.1:3333/). If you get an error, the port may be in use. Close other apps or change the port.
